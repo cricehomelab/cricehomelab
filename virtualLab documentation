@@ -1,0 +1,92 @@
+I have a Dell Opitplex 7010 with 16 GB RAM where most of my current lab work is occuring the goal of this lab is to get a better understanding of an enterprise system and how to administer it correctly. To do this I am working my way through Paul Hill's course on active directory and group policy (https://www.udemy.com/course/active-directory-group-policy-2012/). As well as some other tutorial courses I've used to make my lab feel proper. A lot of what I am doing is basing my learning off of his course, but if I have any "I wonder if I can...." I take time away from the course to investigate how and if I can do it. 
+I am primarily interested in learning things in whatever direction my brain goes in, and while this might be a slower way to master any one thing, I'd rather learn basics while I'm curious, because foundational knowledge is always good to have. Its something I see lacking in my own knowledge and the knowledge of people around me in my job.
+My biggest goal from this is to be able to walk away from this feeling like I am better equiped to perform my job, and to be able to have valuable skills for my current and future employers. 
+
+
+Running Notes of the creation of my virtual lab. 
+
+2021-09-13
+1. I reimaged my Dell Optiplex 7010 with a fresh install of Ubuntu 20.04 (LTS with Desktop)
+2. Once the imaging was completed I made sure that things were up to date.
+  A. sudo apt update
+  B. sudo apt upgrade
+3. Installed virtual box
+  A. sudo apt install virtualbox virtualbox-ext-pack
+4. Utilized some reference material to get a basic system set up complete with router, domain controller, and domain client built inside of virutal box.
+  A. Reference Material: https://securitytutorials.co.uk/creating-an-active-directory-home-lab/
+  B. Downloaded PFSense ISO from the offical PFSense download page 
+      1. Source: https://www.pfsense.org/download/
+  C. Created a VM for my PFSense router
+      1. Used a Bridged adapter, 512 MB RAM 10 GB VDI HDD. 
+  D. Created a VM with the Windows 2016 Data Center Edition for Evaluation.
+      1. This is a free version for evalutation and learning from Microsoft. 
+        a. Source: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016
+      2. Named virtual machine domainctl-01 in Virtualbox. 
+      3. Named the virtual computer the same thing. 
+      4. I set my static IP up
+        a. IP:      192.168.1.2
+        b. Subnet:  255.255.255.0
+        c. gateway: 192.168.1.1
+        d. DNS1:    192.168.1.2
+        e. DNS2:    192.168.1.1
+      5. I created a snapshot in virtualbox of this so we can step back to this configuration if needed. 
+        a. Name: FreshInstallConfig
+      6. Installed Domain Controller, DNS Server, and DHCP Server this virtual machine. 
+      7. Promoted this server to be the Domain Controller. 
+        a. I added a new forest and named it domain.local. 
+        b. I set the Directory Service Restore Mode password. 
+        c. Set the NetBIOS name as "DOMAIN"
+        d. I left the database, log files and SYSVOL at their defaults which are listed respectively below. 
+          - c:\windows\NTDS
+          - c:\windows\NTDS
+          - c:\windows\SYSVOL
+        e. I saved the powershell script generated to the desktop of the domain controller (ADDSDeployment.txt) for future 
+           reference.
+  E. Configured DHCP server on domainctl-01
+      1. On the Dashboard home I opened DHCP options I created a new scope under ipv4. 
+        a. I set the range 192.168.1.1 - 192.168.1.254
+        b. I set the subnet to 255.255.255.0
+        c. I left the lease duration at 8 days, which is the default setting. 
+        d. I left the Domain Name and DNS Servers with the default setting. 
+        e. I left the WINS server as Default also.
+      2. I activated the scope. 
+  F. Creation of a client PC to join to the Domain. 
+      1. I downloaded a virtual box image for Windows 10 Enterprise Evaluation. 
+        a. Source: https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/
+      2. I had to install Zip Unzip on my Dell 7010 to be able to extract the OVA from the zipped file that downloads from    
+         Microsoft's page
+        a. I extracted the OVA file in virtualbox, once extracted I named this machine "client001". 
+        b. Once the OVA was loaded, and before I booted it I created a snapshot of the device for a backup. 
+2021-09-14
+  G. Joining my new client to the domain. 
+      1. To join to the domain I went to Start > Settings > About > Advanced Settings > Computer Name and selected the "change".
+      2. Named the computer "client001"
+      3. Joined the domain "domain.local"
+      4. Used my domain administrator credentials to join the domain, and restarted the machine. 
+5. Creation of OU's to organize my domain better. 
+    A. Created an OU named Domain OU and several OU's within that. 
+      1. Domain Users - This will hold the user accounts within the domain. 
+        a. Domain Admins - this will be for administrative accounts. 
+        b. Domain Users - this will be for end user accounts. 
+        c. Innactive Users - rather than deleteing users it seems most organizations I am aware disable user accounts who are no 
+           longer in the organization so I created this to better simulate an enterprise environment. 
+      2. Domain Computers - This will hold computers joined to the domain. 
+        a. Servers - for Domain Servers. 
+        b. Clients - for Domain Client PCs and workstations. 
+    C. Created Domain users to test. 
+      1. Created a user under the "Domain Admins" OU.
+      2. Created a user under the "Domain Users" OU. 
+      3. Currently these will function identically as there are no policies to diferentiate them. 
+      4. Tested both of these logins on client001 to verify that they were able to login. 
+        a. As a further test I verified I could disable the accounts and they would stop working. 
+6. I checked for updates on sandbox-01 (see step 2 for the commands I ran). 
+2021-09-16
+As a note most of what happened here was a bust I was looking to see if I could virtualize rasbian on virtual box. I think I can but the file format was not working when I mounted the file to the disk in virtual box it was an unfamiliar format so I am thinking that I just need to research it more. After that did not pan out I was able to image an Ubuntu server 20.04 image, but I never got to a login screen (I later found out I probably just needed to hit Enter on my keyboard). For this day both of those ideas got scrapped. 
+2021-09-18
+7. I realized I had a growing number of username and passwords and I would need a more secure way of keeping track of them that was not rogue memorization. I installed BitWarden on my sandbox-01 computer to act as a password vault. I realize that this would likely not be an enterprise level solution. For the moment this seems to me to be a decent way to keep track of the different passwords I am using and I should look into seeing if there are evaluation versions of enterprise level software in the future to get used to them as well. 
+8. Setting a group policy to demonstrate the difference between my Domain Admin accounts and my Domain User accounts. 
+    1. Created 2 very basic desktop backgrounds that would allow me to distinguish between desktop users and desktop admins. 
+      a. DomainAdminDesktopBackground.png
+      b. DomainUserDesktopBackground.png
+      c. Created a folder on my DC for deploying Domain Assets C:\DomainAssets
+      d. Within this folder I created a DomainBackgrounds folder. 
