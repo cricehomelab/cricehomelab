@@ -1,6 +1,14 @@
-I have a Dell Opitplex 7010 with 16 GB RAM where most of my current lab work is occuring the goal of this lab is to get a better understanding of an enterprise system and how to administer it correctly. To do this I am working my way through Paul Hill's course on active directory and group policy (https://www.udemy.com/course/active-directory-group-policy-2012/). As well as some other tutorial courses I've used to make my lab feel proper. A lot of what I am doing is basing my learning off of his course, but if I have any "I wonder if I can...." I take time away from the course to investigate how and if I can do it. 
-I am primarily interested in learning things in whatever direction my brain goes in, and while this might be a slower way to master any one thing, I'd rather learn basics while I'm curious, because foundational knowledge is always good to have. Its something I see lacking in my own knowledge and the knowledge of people around me in my job.
-My biggest goal from this is to be able to walk away from this feeling like I am better equiped to perform my job, and to be able to have valuable skills for my current and future employers. 
+I have a Dell Opitplex 7010 with 16 GB RAM where most of my current lab work is occuring the goal of this lab is to get a better 
+understanding of an enterprise system and how to administer it correctly. To do this I am working my way through Paul Hill's course 
+on active directory and group policy (https://www.udemy.com/course/active-directory-group-policy-2012/). As well as some other 
+tutorial courses I've used to make my lab feel proper. A lot of what I am doing is basing my learning off of his course, but if I 
+have any "I wonder if I can...." I take time away from the course to investigate how and if I can do it. 
+I am primarily interested in learning things in whatever direction my brain goes in, and while this might be a slower way to master 
+any one thing, I'd rather learn basics while I'm curious, because foundational knowledge is always good to have. Its something I see 
+lacking in my own knowledge and the knowledge of people around me in my job.
+My biggest goal from this is to be able to walk away from this feeling like I am better equiped to perform my job, and to be able to 
+have valuable skills for my current and future employers. The other thing I am looking to do is to pursue things that seem fun so I 
+can find out if I really like it or not. 
 
 
 Running Notes of the creation of my virtual lab. 
@@ -12,7 +20,8 @@ Running Notes of the creation of my virtual lab.
   B. sudo apt upgrade
 3. Installed virtual box
   A. sudo apt install virtualbox virtualbox-ext-pack
-4. Utilized some reference material to get a basic system set up complete with router, domain controller, and domain client built inside of virutal box.
+4. Utilized some reference material to get a basic system set up complete with router, domain controller, and domain client built 
+   inside of virutal box.
   A. Reference Material: https://securitytutorials.co.uk/creating-an-active-directory-home-lab/
   B. Downloaded PFSense ISO from the offical PFSense download page 
       1. Source: https://www.pfsense.org/download/
@@ -23,12 +32,7 @@ Running Notes of the creation of my virtual lab.
         a. Source: https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016
       2. Named virtual machine domainctl-01 in Virtualbox. 
       3. Named the virtual computer the same thing. 
-      4. I set my static IP up
-        a. IP:      192.168.1.2
-        b. Subnet:  255.255.255.0
-        c. gateway: 192.168.1.1
-        d. DNS1:    192.168.1.2
-        e. DNS2:    192.168.1.1
+      4. I set my static IP up and recorded the scheme in the notes. 
       5. I created a snapshot in virtualbox of this so we can step back to this configuration if needed. 
         a. Name: FreshInstallConfig
       6. Installed Domain Controller, DNS Server, and DHCP Server this virtual machine. 
@@ -44,8 +48,8 @@ Running Notes of the creation of my virtual lab.
            reference.
   E. Configured DHCP server on domainctl-01
       1. On the Dashboard home I opened DHCP options I created a new scope under ipv4. 
-        a. I set the range 192.168.1.1 - 192.168.1.254
-        b. I set the subnet to 255.255.255.0
+        a. I set the range and recorded it in my notes. 
+        b. I set the subnet and recorded it in my notes. 
         c. I left the lease duration at 8 days, which is the default setting. 
         d. I left the Domain Name and DNS Servers with the default setting. 
         e. I left the WINS server as Default also.
@@ -81,12 +85,60 @@ Running Notes of the creation of my virtual lab.
         a. As a further test I verified I could disable the accounts and they would stop working. 
 6. I checked for updates on sandbox-01 (see step 2 for the commands I ran). 
 2021-09-16
-As a note most of what happened here was a bust I was looking to see if I could virtualize rasbian on virtual box. I think I can but the file format was not working when I mounted the file to the disk in virtual box it was an unfamiliar format so I am thinking that I just need to research it more. After that did not pan out I was able to image an Ubuntu server 20.04 image, but I never got to a login screen (I later found out I probably just needed to hit Enter on my keyboard). For this day both of those ideas got scrapped. 
+As a note most of what happened here was a bust I was looking to see if I could virtualize rasbian on virtual box. I think I can but
+the file format was not working when I mounted the file to the disk in virtual box it was an unfamiliar format so I am thinking that
+I just need to research it more. After that did not pan out I was able to image an Ubuntu server 20.04 image, but I never got to a 
+login screen (I later found out I probably just needed to hit Enter on my keyboard). For this day both of those ideas got scrapped. 
 2021-09-18
-7. I realized I had a growing number of username and passwords and I would need a more secure way of keeping track of them that was not rogue memorization. I installed BitWarden on my sandbox-01 computer to act as a password vault. I realize that this would likely not be an enterprise level solution. For the moment this seems to me to be a decent way to keep track of the different passwords I am using and I should look into seeing if there are evaluation versions of enterprise level software in the future to get used to them as well. 
+7. I realized I had a growing number of username and passwords and I would need a more secure way of keeping track of them that was
+not rogue memorization. I installed BitWarden on my sandbox-01 computer to act as a password vault. I realize that this would likely
+not be an enterprise level solution. For the moment this seems to me to be a decent way to keep track of the different passwords I 
+am using and I should look into seeing if there are evaluation versions of enterprise level software in the future to get used to 
+them as well. 
 8. Setting a group policy to demonstrate the difference between my Domain Admin accounts and my Domain User accounts. 
-    1. Created 2 very basic desktop backgrounds that would allow me to distinguish between desktop users and desktop admins. 
-      a. DomainAdminDesktopBackground.png
-      b. DomainUserDesktopBackground.png
-      c. Created a folder on my DC for deploying Domain Assets C:\DomainAssets
-      d. Within this folder I created a DomainBackgrounds folder. 
+    A. Created 2 very basic desktop backgrounds that would allow me to distinguish between desktop users and desktop admins. 
+      1. DomainAdminDesktopBackground.png
+      2. DomainUserDesktopBackground.png
+      3. Created a folder on my DC for deploying Domain Assets C:\DomainAssets
+      4. Within this folder I created a DomainBackgrounds folder. 
+      5. File share config. 
+        a. I went to the folder properties > sharing > advanced sharing. I selected "share this folder" then went to permissions. 
+        b. I removed the "Everyone" group and added "Authenticated Users" and ensured they had read access.
+        c. I recorded my network path in my notes. 
+        d. I verified this was accessible from my domain client pc on both my admin and enduser account. 
+    B. Created a Group Policy Object in my Domain Admins OU named "AdminDesktopBackground"
+       1. added policy under User Configuration > Administrative Templates > Desktop > Desktop > Desktop Wallpaper. 
+       2. set this to Enabled, and set the file path (via the network location) to the location for the bacground. 
+       3. Used the same steps to set mydomain user background named the policy "UserDesktopBackground"
+       4. Ran gpupdate /force and after this I was able to test both the user and the admin account and I verified they were able
+          to see their correct background. 
+       5. Upon seeing them I went back and altered the setting for the image display to "fill" from the default "center" as it worked
+          better with the resolutions of the VM to the resolution of the image. 
+ 9. At this point I took snapshots of all my VM's for backups. 
+ 10. The next step I took was to attempt to push software to my VM. The example in the Paul Hill course was with 7zip, but I have 
+     been able to push that in the past when I was working on this course prior to this current itteration of the lab. I opted this
+     time to try pushing PuTTY, as one of the next VM's I plan to add is a linux server to run PiHole. For a reason I still can't 
+     explain the installation of PuTTY was not able to complete on my attempts to get it to work. I would like to come back to
+     this and try again at a later date. My goal here is not to beat my head against things like work, but to be able to shift 
+     when it makes sense, or if I need to keep myself interested and the current topic is getting a bit stale. 
+     I think my long term solution here is to get SCCM going and see if I can better manage client installs from here, but that 
+     will be for another day. 
+     As a solution for today I was able to install the program manually from the file share that was already set up for the 
+     installer. 
+ 11. From here I was able to create an Ubuntu server 20.04 (LTS) VM to begin the pihole work. I documented my name and was able 
+     to set a Static IP in the /etc/netplan/00-installer-config.yaml file. I was careful to use an IP in my reserved range so as
+     not to cause an issue with my DHCP range, but far enough away from my Domain Controller to allow room for additional Windows
+     based servers. 
+ 20210921
+  12. Maintenance
+       A. Checked to be sure that all my VMs and my sandbox-01 server are up to date. 
+          1. PFSense router option 13 on the VM allowed me to verify it was up to date. 
+          2. Domain Controller had updates to install:
+            a. KB2267602
+            b. KB5005573
+            c. KB4589210
+            d. KB4535680
+          3. pihole server 
+          4. client001
+          5. client002
+            
