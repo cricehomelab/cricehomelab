@@ -3,11 +3,12 @@
 and courses largely revolving around system administration, and getting a better understanding of the architectures that are used in 
 businesses. 
 - Current lines of study.
-  - Active Directory and Group Policy
+  - Active Directory and Group Policy  
   - Linux
   - Virtualization
   - PFSense
   - hardening my home network and segmenting my connections out for a better network overall.  
+  - Organizing my homelab to improve my efficiency and so that my fiance doesn't mind my workspaces. 
 
 
 
