@@ -9,7 +9,10 @@ businesses.
   - PFSense
   - hardening my home network and segmenting my connections out for a better network overall.  
   - Organizing my homelab to improve my efficiency and so that my fiance doesn't mind my workspaces. 
-
+  - Setting up a VPN for my home network in a secure fashion. 
+- A lot of my goals center around building skills but doing it in a way that I don't get bored doing just one topic at a time. 
+  I want to move at a pace where I can pursue my interests as they come up, and sometimes that may mean my "main" course of learing
+  and discovery may take a back burner while I indulge my curiosity. 
 
 
 <!---
