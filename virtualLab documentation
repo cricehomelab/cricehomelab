@@ -130,7 +130,7 @@ them as well.
      not to cause an issue with my DHCP range, but far enough away from my Domain Controller to allow room for additional Windows
      based servers. 
  20210921
-  12. Maintenance
+ 12. Maintenance
        A. Checked to be sure that all my VMs and my sandbox-01 server are up to date. 
           1. PFSense router option 13 on the VM allowed me to verify it was up to date. 
           2. Domain Controller had updates to install:
@@ -141,4 +141,12 @@ them as well.
           3. pihole server 
           4. client001
           5. client002
-            
+  20210926
+  13. This week has been very busy in work and personally my main focus this week has been organizing my physical machines in a way
+      that My fiance does not hate. I reorganized my basement lab area so it was not a cluttered mess of work, fun, and lab 
+      equipment. I reorganized my basement area where my computers are mostly concentrated. This is part of my goal to organize 
+      harden and optimize my home network. I should be receiving a KVM switch from amazon shortly which will allow me to run my 
+      computers through a single monitor. 
+      I also realized this week that I still have my old gaming rig and while it won't do for gaming it will 100% do really well for
+      having a second lab stood up. I think I may experiment with running proxmox. I'd like to make it a goal after I finish the 
+      UDemy Course on Active Directory. 
