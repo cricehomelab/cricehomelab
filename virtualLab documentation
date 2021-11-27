@@ -1,4 +1,4 @@
-I have a Dell Opitplex 7010 with 16 GB RAM where most of my current lab work is occuring the goal of this lab is to get a better 
+I have a Dell Optiplex 7010 with 16 GB RAM where most of my current lab work is occuring the goal of this lab is to get a better 
 understanding of an enterprise system and how to administer it correctly. To do this I am working my way through Paul Hill's course 
 on active directory and group policy (https://www.udemy.com/course/active-directory-group-policy-2012/). As well as some other 
 tutorial courses I've used to make my lab feel proper. A lot of what I am doing is basing my learning off of his course, but if I 
@@ -164,7 +164,8 @@ them as well.
           2. KB5007192
           2. KB890830
           4. KB4052623
-      B. Restarted Domain controller to apply changes. 
+      B. Restarted Domain controller to apply changes from admin command prompt with slmgr -rearm
+      C. I had to rearm both client001 and client 002 PCs
   18. My next action will be to enable Roaming profiles in my domain.
       A. In server Manager I went to File and Storage Services
       B. Selected Shares in the left column. 
@@ -185,7 +186,18 @@ them as well.
       data and Create Folders/Append data. 
       L. I selected "Only apply these permissions to objects and/or containers within this container"
       M. Completed the share creation. 
-      N. Network Path for this share is: 
+      N. Network Path for this share is: \\domainctl-01\RoamingUserProfiles$
+      O. In the Security group Roaming Profile Users I selected the User I had added to this group. Went to Profile and under
+      Profile Path I added \domainctl-01\RoamingUserProfiles$\%username%
+      P. To test this I logged in my user that was configured for a roaming profile and I noticed that the users folder had not created. 
+      Q. Looking back over my notes I noticed I need to go back into my permissions for the fileshare and edit the Administrators group.
+          1. Permissions > Customize permissions > Administratrors > Edit
+          2. Selected Only apply these permissiong to objects or containers within this Container. 
+          3. OK > Apply > OK. 
+      R. After making this change I was able to verify the folder created and that the profile worked on multiple desktops.
+          1. on the desktop I created a txt file and was able to see it on both client PC's I have in the Domain. 
+          2. The edits to this document were able to be seen between both client devices. 
+          
       
    
           
