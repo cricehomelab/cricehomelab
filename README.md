@@ -4,17 +4,14 @@ and courses largely revolving around system administration, and getting a better
 businesses. 
 - Current lines of study.
   - Active Directory and Group Policy  
-  - Linux
   - Virtualization
   - PFSense
-  - hardening my home network and segmenting my connections out for a better network overall.  
-  - Organizing my homelab to improve my efficiency and so that my fiance doesn't mind my workspaces. 
-  - Setting up a VPN for my home network in a secure fashion. 
-- A lot of my goals center around building skills but doing it in a way that I don't get bored doing just one topic at a time. 
-  I want to move at a pace where I can pursue my interests as they come up, and sometimes that may mean my "main" course of learing
-  and discovery may take a back burner while I indulge my curiosity. 
-
-
+  - PowerShell
+  - Python
+  - Building Linux proficiencies. 
+- My goal with this is to be able show what I am learning and document that learning process. 
+- Through building these skills I would like to be able to showcase my knowledge and be able to show myself my growth and be able to
+  show potential employers my knowledge and growth that I am commiting my personal time to. 
 <!---
 cricehomelab/cricehomelab is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
