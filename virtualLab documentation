@@ -153,4 +153,51 @@ them as well.
   20211107
   14. Over the past month I've been getting married and adjusting to married life. I am currently working to review the course up to the 
       point where I am now. Once I finish reveiwing and taking notes on the topics. I will be back to updating the progress on the lab. 
+  20211127
+  15. I've finished going through the Paul Hill Course on Active Directory and will now be getting back to configuring my network domain. For the moment
+  my plans are to finish with the configuration of the Windows devices in this network and get them up to the place where the course leaves off. I may come back
+  the linux devices, but for the time being I will leave those shut down. 
+  16. Taking snapshots of all devices prior to doing any work since it has been a while since a snapshot was taken
+  17. Upon Bootup it looks as though I will need to install updates. 
+      A. Domain Controller updates
+          1. KB2267602
+          2. KB5007192
+          2. KB890830
+          4. KB4052623
+      B. Restarted Domain controller to apply changes. 
+  18. My next action will be to enable Roaming profiles in my domain.
+      A. In server Manager I went to File and Storage Services
+      B. Selected Shares in the left column. 
+      C. In the Share window, I right clicked (in empty space) and selected New Share. 
+      D. Selected SMB Share - Quick and hit Next. 
+      E. Selected my domain controller domainctl-01 and selected c:\ drive as that is the only partitioned drive on this at the moment
+      chose Next. 
+      F. Share name will be RoamingUserProfiles$
+      G. Under Confgiure settings I selected Enable access-based Enumeration, Allow Caching of share, and Encrypt data access. 
+      H. Under Specify permissions to control access. I went into Customize Permissions. 
+          1. Chose to Diable Inheritance > Convert inherited permissions into explicit permissions on this object. 
+          2. I removed any user that was not SYSTEM, Administrators, and CREATOR OWNER. 
+      I. Opened the Active Directory Users and Computers and created a group under my Domain.local named "Roaming Profile Users"
+          1. I added my admin account to this group this account had been created previously in testing the desktop background 
+          policy for admin and normal users (see Step 8). 
+      J. I added the "Roaming Profile Users" to the permissions that had begun to be configured above in part 18 - H. 
+      K. I removed the basic permissions, wen to Show Advanced permissions I have the following options selected: List folder/read
+      data and Create Folders/Append data. 
+      L. I selected "Only apply these permissions to objects and/or containers within this container"
+      M. Completed the share creation. 
+      N. Network Path for this share is: 
+      
+   
+          
+          
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
