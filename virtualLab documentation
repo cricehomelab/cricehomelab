@@ -165,7 +165,7 @@ them as well.
           2. KB890830
           4. KB4052623
       B. Restarted Domain controller to apply changes from admin command prompt with slmgr -rearm
-      C. I had to rearm both client001 and client 002 PCs
+      C. I had to rearm both client001 and client002 PCs
   18. My next action will be to enable Roaming profiles in my domain.
       A. In server Manager I went to File and Storage Services
       B. Selected Shares in the left column. 
@@ -197,6 +197,37 @@ them as well.
       R. After making this change I was able to verify the folder created and that the profile worked on multiple desktops.
           1. on the desktop I created a txt file and was able to see it on both client PC's I have in the Domain. 
           2. The edits to this document were able to be seen between both client devices. 
+  19. Spent some time mapping out the next several lab sessions I have for applying principals of the course. 
+  20211128
+  20. Setting up a fileshare that will automatically map for users. 
+      A. Created a user account for a human resources group
+      B. Created a Security group called Human Resources in the Domain OU > Domain Users > End Users OU. 
+      C. Created a fileshare for the Human Resoruces Security group. 
+          1. In server manager went to File and Storage Services > Shares > New Share. 
+          2. Made SMB Share - Quick. 
+          3. Network path is \\domainctl-01\HumanResources. 
+          4. Under Configure share settings we only have Allow caching of share checked. 
+          5. Under Specify permiisions to control access went into Customize permissions
+              a. Disable inheritance > Convert inherited permissions into explicit permissions on this object. 
+              b. Remvoed DOMAIN\Users from these permissions. 
+              c. Added principal Human Resources Security group. 
+              d. Permissions for this group are Read & Execute, List folder contents, Read, and Write.    
+      D. Verified the Human Resources Shared folder exists. 
+      E. Set a GPO to map this network share for members of the Human Resources Security group. 
+          1. Opened Group Policy Management
+          2. In the OU Domain OU > Domain Users > End Users I created a new GPO named HR Share Folder
+          3. Under User Configuration > Preferences > Windows Settings > Drive Maps I created a New Mapped Drive    
+          4. I specified the network path to the network Drive and named it Human Resources. I checked the "Reconnect" box. 
+          5. I set the Drive letter to be Z:
+          6. I finalized creation of the GPO
+      F. I configured the Security filtering for this share. 
+          1. I removed Authenticated Users from Security filtering
+          2. I added Human Resources to the Security Filtering. 
+          3. We readded Authenticated Users and Ensured they had Read only access. 
+          4. For the Human Resources group we verified they have Read, Write, Create all child objects, and Delete all Child 
+          Objects. 
+      G. To verify these settings I was able to login to a client pc with my HR user. Under this PC I was able to find the Human
+      Resources share and was able to create a file. It shows as the Z drive. 
           
       
    
