@@ -228,7 +228,21 @@ them as well.
           Objects. 
       G. To verify these settings I was able to login to a client pc with my HR user. Under this PC I was able to find the Human
       Resources share and was able to create a file. It shows as the Z drive. 
-          
+  21. Configuring the Domain Password and Domain Account lockout Policies From the GPOs. 
+      A. Opened my Default Domain Policy, and navigated to Computer Configuration > Windows Settings > Security Settings > Account 
+      Policies > Password Policy
+          1. Verified the Enforce password history was set to remember 24 passwords. 
+          2. Set Maximum password age to 60 Days.
+          3. Set Minimum password age to 0 days. 
+          4. Set Minimum password length to 14 characters.
+          5. Verified Password must meet complexity requirements is enabled. 
+          6. Verified Store passwords using reversible encryption is disabled. 
+      B. Navigated to Computer Configuration > Windows Settings > Security Settings > Account 
+      Policies > Account Lockout Policy. 
+          1. Defined Account Lockout Duration to 15 minutes. 
+          2. Left Account lockout threshold at 5 invalid login attempts as is. 
+          3. Left Reset account locout counter after 15 minutes as is. 
+      
       
    
           
