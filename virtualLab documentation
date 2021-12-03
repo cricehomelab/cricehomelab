@@ -242,7 +242,41 @@ them as well.
           1. Defined Account Lockout Duration to 15 minutes. 
           2. Left Account lockout threshold at 5 invalid login attempts as is. 
           3. Left Reset account locout counter after 15 minutes as is. 
-      
+20211202          
+  22. Domain controller needs an update installing
+      A. KB4052623
+  23. Setting up a PSO for fine grained password policies.
+      A. NOTE: This is more for learning for this purpose I will be setting up a PSO for a test security group, less for practical 
+      purposes and more for just having the experience of configuring this. As a note this would be used to set up password policies
+      on a per user or per security group basis. 
+      B. I created a security group called "TEST 7 day Password"
+      C. I created a user for testing and added this user to the test group created in step 23 B
+      D. In server manager I opened ADSI Edit. 
+          1. Right Clicked ADSI Edit and selected Connect to..
+          2. I left the settings as default on the first window.
+          3. Expanded Default Naming Context > DC > CN=System > CN=PasswordSettingsContainer
+          4. Right Click in the window > New > Object
+          5. Left msDS-PasswordSettings selected and hit Next. 
+          6. For Common Name I set the value to 7DayPasswordAge
+          7. For Pasword Settings Precedence I entered a value of 1.
+          8. For Password reversible encryption for user accounts I entered a value of FALSE
+          9. For Password History length for user accounts I set it to 24
+          10. For Password complexity status for user accounts I set it to TRUE
+          11. For Minimum password length for user accounts I set this to 14.
+          12. For Minimum password age for user accounts I set this to 00:00:00:00
+          13. For Maximum password age for user accounts I set this to 07:00:00:00
+          14. For Lockout Threshold for user accounts I set this at 3
+          15. For the Lockout Observation window I set this to 00:00:15:00
+          16. For the Lockout Duration I set this to 00:00:15:00
+          17. I completed the creation of the PSO. 
+          18. I right clicked on my PSO and went to properties. 
+          19. Found the field named msDS-PSOAppliesTo and set it to the TEST 7 day Password security group I had made in step 23-B.
+      E. In order to check when the user added to my security group has their password expires. I ran the following commands from powershell.
+               
+      Import-Module ActiveDirectory
+      Get-ADUser -filter {Enabled -eq $True -and PasswordNeverExpires -eq $False} –Properties "DisplayName", "msDS-UserPasswordExpiryTimeComputed" |
+Select-Object -Property "Displayname",@{Name="ExpiryDate";Expression={[datetime]::FromFileTime($_."msDS-UserPasswordExpiryTimeComputed")}}
+          1. From the I found my test user and could verify the expiration date of the password is about 7 days from now. 
       
    
           
