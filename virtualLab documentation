@@ -297,6 +297,8 @@ Select-Object -Property "Displayname",@{Name="ExpiryDate";Expression={[datetime]
   AddProfilePathForRoamingUsers.ps1
       A. Tested this by adding a new roaming user and verifying the path populated. 
       B. Tested this further by logging in with the user and ensuring that the user's profile shows up in the roaming profile location. 
+      C. This is an automation to prevent having to manually configure this and would be especially useful if there were multiple users being added in a single day
+      to a group like this. 
   
           
           
