@@ -293,6 +293,10 @@ Select-Object -Property "Displayname",@{Name="ExpiryDate";Expression={[datetime]
   more detailed process journal that outlines individual processes. My idea here is that this journal can be reference material for creating reproducible
   processe, and some of my disctractions that are documented throughout here can be eliminated if I need to quickly reference a process as I reprocduce
   different actions. 
+  31. Created a script to set a network location for a profile path for users in my roaming profile group. Uploaded script named 
+  AddProfilePathForRoamingUsers.ps1
+      A. Tested this by adding a new roaming user and verifying the path populated. 
+      B. Tested this further by logging in with the user and ensuring that the user's profile shows up in the roaming profile location. 
   
           
           
