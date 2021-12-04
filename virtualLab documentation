@@ -277,8 +277,18 @@ them as well.
       Get-ADUser -filter {Enabled -eq $True -and PasswordNeverExpires -eq $False} –Properties "DisplayName", "msDS-UserPasswordExpiryTimeComputed" |
 Select-Object -Property "Displayname",@{Name="ExpiryDate";Expression={[datetime]::FromFileTime($_."msDS-UserPasswordExpiryTimeComputed")}}
           1. From the I found my test user and could verify the expiration date of the password is about 7 days from now. 
-      
-   
+
+20211204
+  24. Enabling Powershell script execution. As we will need to run several script and will be setting up some powershell related automations. 
+  25. Opened group policy manager on the domain controller. 
+  26. Opened the default domain policy.
+  27. Configured the computer policy. 
+      A. Computer Configuration > Administrative Templates > Windows Components > Windows Powershell > Turn on script exectution.
+          1. Edited this policy so that script execution is enabled and all scripts will be able to be run. 
+  28. Configured User policy. 
+      A. User Configuration > Administrative Templates > Windows Components > Windows Powershell > Turn on script exectution.
+          1. Edited this policy so that script execution is enabled and all scripts will be able to be run.
+  
           
           
       
