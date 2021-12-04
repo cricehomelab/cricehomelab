@@ -9,6 +9,7 @@ Get-ADUser -Filter * -ResultSetSize 100 -Properties lastLogon | Select-Object na
 # In this example I am pulling the users in the 'End Users' OU
 # The Search base used can be found in AD Users and Computers with advanced features turned on, by right clicking
 # the Desired OU and finding the "distinguishedName" in the attribute Editor. 
+# base format: Get-ADUser -Filter * -SearchBase "<distinguishedName goes here>"
 Get-ADUser -Filter * -SearchBase "OU=End Users,OU=Domain Users,OU=Domain OU,DC=domain,DC=local"
 
 # List all members of a particular Security group.
