@@ -290,7 +290,9 @@ Select-Object -Property "Displayname",@{Name="ExpiryDate";Expression={[datetime]
           1. Edited this policy so that script execution is enabled and all scripts will be able to be run.
   29. Went through and tested out several powershell commands Started a document called "Useful Powershell Commands" and have documented their uses. 
   30. Going back through this documentation I like this as a journal but it is long and may be difficult to find things. I am starting to create a bit
-  more detailed process journal that outlines individual processes. 
+  more detailed process journal that outlines individual processes. My idea here is that this journal can be reference material for creating reproducible
+  processe, and some of my disctractions that are documented throughout here can be eliminated if I need to quickly reference a process as I reprocduce
+  different actions. 
   
           
           
