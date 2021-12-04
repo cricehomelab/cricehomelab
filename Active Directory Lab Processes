@@ -1,12 +1,23 @@
 Active Directory Lab setup:
 This is the process used to configure and setup the base lab I have been using. 
 
+Source Material – contains the links to the resources I have utilized in the setup and configuration of the lab. 
+Naming Conventions – contains the naming conventions I am using for devices and tools. 
+Devices Created – these are the PCs that are on my 
+Baremetal server image process
+Install of Oracle Virtual Box process 
+PfSense VM Creation Process 
+Domain Controller Creation and configuration process:
+Creation of a client PCs Process
+Join the client PC’s to the domain Process
+
+
+
 Source Material: 
 https://www.udemy.com/course/active-directory-group-policy-2012/
 This is the base course I have been using to set up the lab and configure things.
 https://securitytutorials.co.uk/creating-an-active-directory-home-lab/ 
-This resource gave me the base instructions for creating the base lab. I used this as a supplement to the  creation in the udemy course. 
-I felt like the base lab creation was lacking and I found this as an alternative for lab creation, and learning to join a client to the domain. 
+This resource gave me the base instructions for creating the base lab. I used this as a supplement to the  creation in the udemy course. I felt like the base lab creation was lacking and I found this as an alternative for lab creation, and learning to join a client to the domain. 
 https://www.pfsense.org/download/ 
 This resource contained the ISO used to create a VM for pfSense. 
 https://ubuntu.com/download/desktop 
@@ -29,7 +40,7 @@ client002 – this is my second client device.
 Baremetal server image process:
 1. Imaged my Dell Optiplex 7010 with Ubuntu 20.04 (LTS with desktop). I used default setting to image this and did not do anything fancy with partitions.
 
-Install of Virtual Box process:
+Install of Oracle Virtual Box process:
 2. Installed Oracle Virtualbox on the server
 	A. Command to install from the bash shell: sudo apt install virtualbox virtualbox-ext-pack
 
@@ -72,6 +83,5 @@ Join the client PC’s to the domain Process
 4. Joined the computer to the domain ‘domain.local’
 	A. enter in administrator credentials for the domain controller in order to complete the domain creation. 
 	B. Restarted the PC. 
-5. To verify this completed, once client is joined to the Domain the PC will be present in the default location for computers in Active Directory 
-Users and computers. Alternatively this can also be verified by logging into the computer using a domain user if one is already created. 
+5. To verify this completed, once client is joined to the Domain the PC will be present in the default location for computers in Active Directory Users and computers. 
 	
