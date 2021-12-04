@@ -1,2 +1,26 @@
+# Import the Active Directory module
+Import-Module ActiveDirectory
 
+# List all users in AD 
+# -ResultSetSize limits this to 100 users this can be important in a large domain
+Get-ADUser -Filter * -ResultSetSize 100 -Properties lastLogon | Select-Object name, Enabled, lastLogon
 
+# List all users in an OU.
+# In this example I am pulling the users in the 'End Users' OU
+# The Search base used can be found in AD Users and Computers with advanced features turned on, by right clicking
+# the Desired OU and finding the "distinguishedName" in the attribute Editor. 
+Get-ADUser -Filter * -SearchBase "OU=End Users,OU=Domain Users,OU=Domain OU,DC=domain,DC=local"
+
+# List all members of a particular Security group.
+# put the name of the security group you want to check in a quote after Get-ADGroupMember. 
+# base format: Get-AdGroupMember '<Insert groupname here>' | Select-Object Name, DistinguishedName
+Get-AdGroupMember 'Human Resources' | Select-Object Name, DistinguishedName
+
+# Find users that are disabled on the Domain
+Search-ADAccount -AccountDisabled | Select-Object name
+
+# Saving the output of a command or commands to a csv file. 
+# We are using the previous command to output the members of a security group as
+# an example command to save as a csv. 
+# base format: Search-ADAccount -AccountDisabled | Select-Object name | Export-CSV "<Filepath to save>"
+Search-ADAccount -AccountDisabled | Select-Object name | Export-CSV "C:\shares\HumanResources\DisabledUsers.csv"
