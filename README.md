@@ -5,9 +5,9 @@ businesses.
 - Current lines of study.
   - Active Directory and Group Policy  
   - Virtualization
-  - PFSense
   - PowerShell
   - Python
+  - PFSense
   - Building Linux proficiencies. 
 - My goal with this is to be able show what I am learning and document that learning process. 
 - Through building these skills I would like to be able to showcase my knowledge and be able to show myself my growth and be able to
