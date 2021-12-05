@@ -1,0 +1,21 @@
+This document is a list of GPO's created in my Active Directory Lab, and their purpose. 
+
+Admin Desktop Background - This policy sets my admin user's up with a unique background for administrative users. 
+Default Domain Controller Policy - This policy is purely default and has not been edited. 
+Default Domain Policy - This is mostly default but has had several edits made to it
+  Edit 1 - I've customized the password requirements and lockout policies.
+          Computer Configuration > Windows Settings > Security Settings > Account Policies > Password Policy
+          1. Verified the Enforce password history was set to remember 24 passwords. 
+          2. Set Maximum password age to 60 Days.
+          3. Set Minimum password age to 0 days. 
+          4. Set Minimum password length to 14 characters.
+          5. Verified Password must meet complexity requirements is enabled. 
+          6. Verified Store passwords using reversible encryption is disabled.
+          User Configuration > Windows Settings > Security Settings > Account Policies > Account Lockout Policy. 
+          1. Defined Account Lockout Duration to 15 minutes. 
+          2. Account lockout threshold at 5 invalid login attempts as is. 
+          3. Reset account lockout counter after 15 minutes as is. 
+          Computer Configuration > Administrative Templates > Windows Components > Windows Powershell > Turn on script exectution.
+          1. Edited this policy so that script execution is enabled.
+HR Share folder - Creates a fileshare for the members of the Human Resources Security group. 
+UserDesktopBackground - This policy sets my non-admin user's up with a unique background for administrative users.
