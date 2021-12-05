@@ -114,8 +114,8 @@ them as well.
           to see their correct background. 
        5. Upon seeing them I went back and altered the setting for the image display to "fill" from the default "center" as it worked
           better with the resolutions of the VM to the resolution of the image. 
- 9. At this point I took snapshots of all my VM's for backups. 
- 10. The next step I took was to attempt to push software to my VM. The example in the Paul Hill course was with 7zip, but I have 
+9. At this point I took snapshots of all my VM's for backups. 
+10. The next step I took was to attempt to push software to my VM. The example in the Paul Hill course was with 7zip, but I have 
      been able to push that in the past when I was working on this course prior to this current itteration of the lab. I opted this
      time to try pushing PuTTY, as one of the next VM's I plan to add is a linux server to run PiHole. For a reason I still can't 
      explain the installation of PuTTY was not able to complete on my attempts to get it to work. I would like to come back to
@@ -125,12 +125,12 @@ them as well.
      will be for another day. 
      As a solution for today I was able to install the program manually from the file share that was already set up for the 
      installer. 
- 11. From here I was able to create an Ubuntu server 20.04 (LTS) VM to begin the pihole work. I documented my name and was able 
+11. From here I was able to create an Ubuntu server 20.04 (LTS) VM to begin the pihole work. I documented my name and was able 
      to set a Static IP in the /etc/netplan/00-installer-config.yaml file. I was careful to use an IP in my reserved range so as
      not to cause an issue with my DHCP range, but far enough away from my Domain Controller to allow room for additional Windows
      based servers. 
- 20210921
- 12. Maintenance
+2021-09-21
+12. Maintenance
        A. Checked to be sure that all my VMs and my sandbox-01 server are up to date. 
           1. PFSense router option 13 on the VM allowed me to verify it was up to date. 
           2. Domain Controller had updates to install:
@@ -141,8 +141,8 @@ them as well.
           3. pihole server 
           4. client001
           5. client002
-  20210926
-  13. This week has been very busy in work and personally my main focus this week has been organizing my physical machines in a way
+2021-09-26
+13. This week has been very busy in work and personally my main focus this week has been organizing my physical machines in a way
       that My fiance does not hate. I reorganized my basement lab area so it was not a cluttered mess of work, fun, and lab 
       equipment. I reorganized my basement area where my computers are mostly concentrated. This is part of my goal to organize 
       harden and optimize my home network. I should be receiving a KVM switch from amazon shortly which will allow me to run my 
@@ -150,15 +150,15 @@ them as well.
       I also realized this week that I still have my old gaming rig and while it won't do for gaming it will 100% do really well for
       having a second lab stood up. I think I may experiment with running proxmox. I'd like to make it a goal after I finish the 
       UDemy Course on Active Directory. 
-  20211107
-  14. Over the past month I've been getting married and adjusting to married life. I am currently working to review the course up to the 
+2021-11-07
+14. Over the past month I've been getting married and adjusting to married life. I am currently working to review the course up to the 
       point where I am now. Once I finish reveiwing and taking notes on the topics. I will be back to updating the progress on the lab. 
-  20211127
-  15. I've finished going through the Paul Hill Course on Active Directory and will now be getting back to configuring my network domain. For the moment
+2021-11-27
+15. I've finished going through the Paul Hill Course on Active Directory and will now be getting back to configuring my network domain. For the moment
   my plans are to finish with the configuration of the Windows devices in this network and get them up to the place where the course leaves off. I may come back
   the linux devices, but for the time being I will leave those shut down. 
-  16. Taking snapshots of all devices prior to doing any work since it has been a while since a snapshot was taken
-  17. Upon Bootup it looks as though I will need to install updates. 
+16. Taking snapshots of all devices prior to doing any work since it has been a while since a snapshot was taken
+17. Upon Bootup it looks as though I will need to install updates. 
       A. Domain Controller updates
           1. KB2267602
           2. KB5007192
@@ -166,7 +166,7 @@ them as well.
           4. KB4052623
       B. Restarted Domain controller to apply changes from admin command prompt with slmgr -rearm
       C. I had to rearm both client001 and client002 PCs
-  18. My next action will be to enable Roaming profiles in my domain.
+18. My next action will be to enable Roaming profiles in my domain.
       A. In server Manager I went to File and Storage Services
       B. Selected Shares in the left column. 
       C. In the Share window, I right clicked (in empty space) and selected New Share. 
@@ -197,9 +197,9 @@ them as well.
       R. After making this change I was able to verify the folder created and that the profile worked on multiple desktops.
           1. on the desktop I created a txt file and was able to see it on both client PC's I have in the Domain. 
           2. The edits to this document were able to be seen between both client devices. 
-  19. Spent some time mapping out the next several lab sessions I have for applying principals of the course. 
-  20211128
-  20. Setting up a fileshare that will automatically map for users. 
+19. Spent some time mapping out the next several lab sessions I have for applying principals of the course. 
+2021-11-28
+20. Setting up a fileshare that will automatically map for users. 
       A. Created a user account for a human resources group
       B. Created a Security group called Human Resources in the Domain OU > Domain Users > End Users OU. 
       C. Created a fileshare for the Human Resoruces Security group. 
@@ -228,7 +228,7 @@ them as well.
           Objects. 
       G. To verify these settings I was able to login to a client pc with my HR user. Under this PC I was able to find the Human
       Resources share and was able to create a file. It shows as the Z drive. 
-  21. Configuring the Domain Password and Domain Account lockout Policies From the GPOs. 
+21. Configuring the Domain Password and Domain Account lockout Policies From the GPOs. 
       A. Opened my Default Domain Policy, and navigated to Computer Configuration > Windows Settings > Security Settings > Account 
       Policies > Password Policy
           1. Verified the Enforce password history was set to remember 24 passwords. 
@@ -241,8 +241,8 @@ them as well.
           1. Defined Account Lockout Duration to 15 minutes. 
           2. Left Account lockout threshold at 5 invalid login attempts as is. 
           3. Left Reset account lockout counter after 15 minutes as is. 
-20211202          
-  22. Domain controller needs an update installing
+2021-12-02          
+22. Domain controller needs an update installing
       A. KB4052623
   23. Setting up a PSO for fine grained password policies.
       A. NOTE: This is more for learning for this purpose I will be setting up a PSO for a test security group, less for practical 
@@ -278,26 +278,27 @@ Select-Object -Property "Displayname",@{Name="ExpiryDate";Expression={[datetime]
           1. From the I found my test user and could verify the expiration date of the password is about 7 days from now. 
 
 20211204
-  24. Enabling Powershell script execution. As we will need to run several script and will be setting up some powershell related automations. 
-  25. Opened group policy manager on the domain controller. 
-  26. Opened the default domain policy.
-  27. Configured the computer policy. 
+24. Enabling Powershell script execution. As we will need to run several script and will be setting up some powershell related automations. 
+25. Opened group policy manager on the domain controller. 
+26. Opened the default domain policy.
+27. Configured the computer policy. 
       A. Computer Configuration > Administrative Templates > Windows Components > Windows Powershell > Turn on script exectution.
           1. Edited this policy so that script execution is enabled and all scripts will be able to be run. 
-  28. Configured User policy. 
+28. Configured User policy. 
       A. User Configuration > Administrative Templates > Windows Components > Windows Powershell > Turn on script exectution.
           1. Edited this policy so that script execution is enabled and all scripts will be able to be run.
-  29. Went through and tested out several powershell commands Started a document called "Useful Powershell Commands" and have documented their uses. 
-  30. Going back through this documentation I like this as a journal but it is long and may be difficult to find things. I am starting to create a bit
+29. Went through and tested out several powershell commands Started a document called "Useful Powershell Commands" and have documented their uses. 
+30. Going back through this documentation I like this as a journal but it is long and may be difficult to find things. I am starting to create a bit
   more detailed process journal that outlines individual processes. My idea here is that this journal can be reference material for creating reproducible
   processe, and some of my disctractions that are documented throughout here can be eliminated if I need to quickly reference a process as I reprocduce
   different actions. 
-  31. Created a script to set a network location for a profile path for users in my roaming profile group. Uploaded script named 
+31. Created a script to set a network location for a profile path for users in my roaming profile group. Uploaded script named 
   AddProfilePathForRoamingUsers.ps1
       A. Tested this by adding a new roaming user and verifying the path populated. 
       B. Tested this further by logging in with the user and ensuring that the user's profile shows up in the roaming profile location. 
       C. This is an automation to prevent having to manually configure this and would be especially useful if there were multiple users being added in a single day
       to a group like this. 
+32. Created documentation for the GPO's created on the lab. 
   
           
           
