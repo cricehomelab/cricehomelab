@@ -237,11 +237,10 @@ them as well.
           4. Set Minimum password length to 14 characters.
           5. Verified Password must meet complexity requirements is enabled. 
           6. Verified Store passwords using reversible encryption is disabled. 
-      B. Navigated to Computer Configuration > Windows Settings > Security Settings > Account 
-      Policies > Account Lockout Policy. 
+      B. Navigated to User Configuration > Windows Settings > Security Settings > Account Policies > Account Lockout Policy. 
           1. Defined Account Lockout Duration to 15 minutes. 
           2. Left Account lockout threshold at 5 invalid login attempts as is. 
-          3. Left Reset account locout counter after 15 minutes as is. 
+          3. Left Reset account lockout counter after 15 minutes as is. 
 20211202          
   22. Domain controller needs an update installing
       A. KB4052623
