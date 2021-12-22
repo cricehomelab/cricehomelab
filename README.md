@@ -3,10 +3,10 @@
 and courses largely revolving around system administration, and getting a better understanding of the architectures that are used in 
 businesses. 
 - Current lines of study.
+  - Python
   - Active Directory and Group Policy  
   - Virtualization
   - PowerShell
-  - Python
   - PFSense
   - Building Linux proficiencies. 
 - My goal with this is to be able show what I am learning and document that learning process. 
