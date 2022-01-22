@@ -4,8 +4,9 @@ and courses largely revolving around system administration, and getting a better
 businesses. 
 - Current lines of study.
   - Python
+  - Cloud
+    - Google Cloud Platform
   - Active Directory and Group Policy
-  - Cloud  
   - Virtualization
   - PowerShell
   - PFSense
