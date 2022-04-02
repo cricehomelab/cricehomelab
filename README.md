@@ -4,6 +4,7 @@ and courses largely revolving around system administration, and getting a better
 businesses. 
 - Current lines of study.
   - Python
+  - Javascript
   - Cloud
     - Google Cloud Platform
   - Active Directory and Group Policy
