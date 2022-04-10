@@ -8,7 +8,6 @@ businesses.
   - Cloud
     - Google Cloud Platform
   - Active Directory and Group Policy
-  - Virtualization
   - PowerShell
   - PFSense
   - Building Linux proficiencies. 
