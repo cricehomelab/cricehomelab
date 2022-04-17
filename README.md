@@ -3,7 +3,7 @@
 and courses largely revolving around system administration, and getting a better understanding of the architectures that are used in 
 businesses. 
 - Current lines of study.
-  - Python
+  - Python - This has been my primary interest.
   - Javascript
   - Cloud
     - Google Cloud Platform
