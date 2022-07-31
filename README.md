@@ -3,9 +3,9 @@
 and courses largely revolving around system administration, and getting a better understanding of the architectures that are used in 
 businesses. 
 - Current lines of study.
-  - Puppet
-  - c#
-  - - Building Linux proficiencies.
+  - Puppet  
+  - Building Linux proficiencies.
+  - c# 
   - Python 
   - Cloud
     - Google Cloud Platform
