@@ -4,8 +4,7 @@ and courses largely revolving around system administration, and getting a better
 businesses. 
 - Current lines of study.
   - Puppet  
-  - Building Linux proficiencies.
-  - c# 
+  - Building Linux proficiencies. 
   - Python 
   - Cloud
     - Google Cloud Platform
