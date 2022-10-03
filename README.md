@@ -5,6 +5,7 @@ businesses.
 - Current lines of study.
   - Puppet  
   - Building Linux proficiencies. 
+  - c#
   - Python 
   - Cloud
     - Google Cloud Platform
